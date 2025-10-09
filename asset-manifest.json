@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/togaf-e/static/css/main.bc1cf723.css",
+    "main.js": "/togaf-e/static/js/main.50f56cee.js",
+    "static/media/video.mp4": "/togaf-e/static/media/video.efb6f15a76ccc9ef40af.mp4",
+    "static/media/preview.jpg": "/togaf-e/static/media/preview.ea0429553539cfd417ad.jpg",
+    "index.html": "/togaf-e/index.html",
+    "main.bc1cf723.css.map": "/togaf-e/static/css/main.bc1cf723.css.map",
+    "main.50f56cee.js.map": "/togaf-e/static/js/main.50f56cee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc1cf723.css",
+    "static/js/main.50f56cee.js"
+  ]
+}
