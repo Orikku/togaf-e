@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import video from "../assets/video.mp4";
-import preview from "../assets/preview.jpg"; // 🔹 imagen portada
+import preview from "../assets/preview.jpg";
 
 function VideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,7 +18,6 @@ function VideoSection() {
 
       <div className="flex justify-center">
         <div className="relative w-full md:w-11/12 lg:w-10/12 h-[520px] rounded-2xl overflow-hidden shadow-2xl bg-black">
-          {/* Video principal */}
           <video
             ref={videoRef}
             className="w-full h-full object-cover"
@@ -30,7 +29,6 @@ function VideoSection() {
             Tu navegador no soporta el formato de video.
           </video>
 
-          {/* Imagen de portada con animación */}
           <AnimatePresence>
             {!isPlaying && (
               <motion.div

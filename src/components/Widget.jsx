@@ -1,34 +1,36 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 
-export default function Widget({ title, content }) {
+function Widget({ title, content }) {
   const [open, setOpen] = useState(false);
 
   return (
     <motion.div
-      className="bg-white shadow-lg rounded-2xl p-6 cursor-pointer hover:shadow-xl transition-all w-full md:w-1/3"
-      onClick={() => setOpen(!open)}
+      className="bg-white text-black rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between border border-gray-200"
       whileHover={{ scale: 1.02 }}
+      onClick={() => setOpen(!open)}
     >
-      <div className="flex justify-between items-center">
-        <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-        <ChevronDown
-          className={`transition-transform ${open ? "rotate-180" : ""}`}
-        />
-      </div>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="mt-3 text-gray-600 text-sm"
-          >
-            {content}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Título */}
+      <h3 className="text-xl font-semibold mb-3 text-indigo-700 flex items-center gap-2">
+        {title}
+      </h3>
+
+      {/* Contenido desplegable */}
+      {open ? (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-base text-black leading-relaxed"
+        >
+          {content}
+        </motion.div>
+      ) : (
+        <p className="text-gray-600 italic select-none">
+          Haz clic para ver más información
+        </p>
+      )}
     </motion.div>
   );
 }
+
+export default Widget;
