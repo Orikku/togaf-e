@@ -14,7 +14,7 @@ function VideoSection() {
 
 	return (
 		<section id="video" className="mb-16">
-			<div className="w-full rounded-2xl overflow-hidden shadow-2xl bg-black">
+			<div className="relative w-full rounded-2xl overflow-hidden bg-black shadow-2xl">
 				<video
 					ref={videoRef}
 					className="w-full h-full object-cover"
@@ -26,7 +26,7 @@ function VideoSection() {
 					Tu navegador no soporta el formato de video.
 				</video>
 
-				{/* <AnimatePresence>
+				<AnimatePresence>
 					{!isPlaying && (
 						<motion.div
 							initial={{ opacity: 1 }}
@@ -45,7 +45,7 @@ function VideoSection() {
 							</motion.button>
 						</motion.div>
 					)}
-				</AnimatePresence> */}
+				</AnimatePresence>
 			</div>
 		</section>
 	);

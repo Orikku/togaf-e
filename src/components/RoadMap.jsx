@@ -27,15 +27,15 @@ const defaultPhases = [
 		title: "Operación y Mejora Continua",
 		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
 	},
-  {
+	{
 		title: "Operación y Mejora Continua",
 		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
 	},
-  {
+	{
 		title: "Operación y Mejora Continua",
 		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
 	},
-  {
+	{
 		title: "Operación y Mejora Continua",
 		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
 	},
