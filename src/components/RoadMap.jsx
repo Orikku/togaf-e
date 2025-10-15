@@ -3,41 +3,24 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const defaultPhases = [
 	{
-		title: "Definición de Alcance",
-		description:
-			"Alineación con objetivos del negocio, actores y criterios de éxito. Identificación de dependencias y restricciones iniciales.",
+		title: "Mapa de Calor de Capacidades",
+		content: <HeatMapPhase />,
 	},
 	{
-		title: "Mapa de Capacidades",
-		description: "Priorización por valor, costo y riesgo. Identificación de quick wins y capacidades habilitadoras.",
+		title: "Diagrama de Gantt",
+		content: <GanttPhase />,
+	},
+	{
+		title: "Paquetes de Trabajo",
+		content: <WorkPackagesPhase />,
+	},
+	{
+		title: "Escenarios",
+		content: <ScenariosPhase />,
 	},
 	{
 		title: "Arquitecturas de Transición",
-		description: "Diseño de iteraciones intermedias que reduzcan riesgo y aceleren el delivery incremental.",
-	},
-	{
-		title: "Plan de Implementación",
-		description: "Roadmap con releases, dependencias, costos estimados y métricas de adopción.",
-	},
-	{
-		title: "Operación y Mejora Continua",
-		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
-	},
-	{
-		title: "Operación y Mejora Continua",
-		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
-	},
-	{
-		title: "Operación y Mejora Continua",
-		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
-	},
-	{
-		title: "Operación y Mejora Continua",
-		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
-	},
-	{
-		title: "Operación y Mejora Continua",
-		description: "Medición de valor, gobierno del cambio y retroalimentación para optimizar el roadmap.",
+		content: <TransitionArchitecturesPhase />,
 	},
 ];
 
@@ -159,7 +142,7 @@ const RoadMap = ({ items = defaultPhases }) => {
 							</div>
 							<div>
 								<h3 className="text-xl font-semibold mb-1">{phases[activeIndex]?.title}</h3>
-								<p className="text-gray-600 leading-relaxed">{phases[activeIndex]?.description}</p>
+								{phases[activeIndex]?.content}
 							</div>
 						</div>
 
@@ -185,5 +168,223 @@ const RoadMap = ({ items = defaultPhases }) => {
 		</section>
 	);
 };
+
+function HeatMapPhase() {
+	const capacidades = [
+		{
+			nombre: "Automatización de Recolección de Evidencia",
+			valor: "Alto",
+			costo: "Medio",
+			incertidumbre: "Bajo",
+			prioridad: "Alto",
+		},
+		{
+			nombre: "Análisis Inteligente de Datos de Auditoría (IA)",
+			valor: "Alto",
+			costo: "Alto",
+			incertidumbre: "Medio",
+			prioridad: "Alto",
+		},
+		{
+			nombre: "Integración con Sistemas Contables de PYMES",
+			valor: "Medio",
+			costo: "Medio",
+			incertidumbre: "Medio",
+			prioridad: "Medio",
+		},
+		{
+			nombre: "Gestión de Reportes y Documentación Automática",
+			valor: "Alto",
+			costo: "Bajo",
+			incertidumbre: "Bajo",
+			prioridad: "Alto",
+		},
+		{
+			nombre: "Seguridad y Cumplimiento Normativo (DIAN, NIIF)",
+			valor: "Alto",
+			costo: "Alto",
+			incertidumbre: "Alto",
+			prioridad: "Medio",
+		},
+		{
+			nombre: "Portal de Clientes y Comunicación Transparente",
+			valor: "Medio",
+			costo: "Medio",
+			incertidumbre: "Bajo",
+			prioridad: "Medio",
+		},
+		{
+			nombre: "Analítica Empresarial y Control de Desempeño",
+			valor: "Alto",
+			costo: "Medio",
+			incertidumbre: "Medio",
+			prioridad: "Alto",
+		},
+	];
+
+	const colorMap = {
+		Alto: "bg-red-500 text-white",
+		Medio: "bg-yellow-400 text-black",
+		Bajo: "bg-green-400 text-black",
+	};
+
+	return (
+		<div className="bg-white p-8 rounded-3xl shadow-xl max-w-5xl mx-auto">
+			<h3 className="text-3xl font-bold text-center text-indigo-700 mb-8">Mapa de Calor de Capacidades</h3>
+
+			<div className="overflow-x-auto">
+				<table className="min-w-full border border-gray-300 rounded-lg text-center">
+					<thead>
+						<tr className="bg-gray-100">
+							<th className="py-3 px-4 border-b border-gray-300 font-semibold text-gray-700">Capacidad</th>
+							<th className="py-3 px-4 border-b border-gray-300 font-semibold text-gray-700">Valor</th>
+							<th className="py-3 px-4 border-b border-gray-300 font-semibold text-gray-700">Costo</th>
+							<th className="py-3 px-4 border-b border-gray-300 font-semibold text-gray-700">Incertidumbre</th>
+							<th className="py-3 px-4 border-b border-gray-300 font-semibold text-gray-700">Prioridad</th>
+						</tr>
+					</thead>
+					<tbody>
+						{capacidades.map((cap, i) => (
+							<tr key={i} className="border-t border-gray-200">
+								<td className="py-3 px-4 border-b border-gray-300 text-gray-800 font-medium text-left">{cap.nombre}</td>
+								<td className={`py-3 px-4 border-b border-gray-300 ${colorMap[cap.valor]}`}>{cap.valor}</td>
+								<td className={`py-3 px-4 border-b border-gray-300 ${colorMap[cap.costo]}`}>{cap.costo}</td>
+								<td className={`py-3 px-4 border-b border-gray-300 ${colorMap[cap.incertidumbre]}`}>
+									{cap.incertidumbre}
+								</td>
+								<td className={`py-3 px-4 border-b border-gray-300 ${colorMap[cap.prioridad]}`}>{cap.prioridad}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+
+			<p className="text-sm text-gray-600 text-center mt-6">
+				<span className="text-red-500 font-semibold">Rojo:</span> Alto &nbsp;|&nbsp;
+				<span className="text-yellow-500 font-semibold">Amarillo:</span> Medio &nbsp;|&nbsp;
+				<span className="text-green-500 font-semibold">Verde:</span> Bajo
+			</p>
+		</div>
+	);
+}
+
+function GanttPhase() {
+	const tasks = [
+		{ name: "Análisis de capacidades", duration: "Ene - Feb", color: "bg-indigo-500" },
+		{ name: "Diseño de arquitectura", duration: "Mar - Abr", color: "bg-blue-500" },
+		{ name: "Prototipo y pruebas", duration: "May - Jul", color: "bg-green-500" },
+		{ name: "Implementación gradual", duration: "Ago - Oct", color: "bg-yellow-500" },
+		{ name: "Optimización y cierre", duration: "Nov - Dic", color: "bg-purple-500" },
+	];
+
+	return (
+		<div className="bg-white p-6 rounded-2xl shadow-md">
+			<h3 className="text-2xl font-semibold text-indigo-700 mb-4 text-center">Diagrama de Gantt</h3>
+			<p className="text-gray-700 mb-6 text-justify">
+				El cronograma de implementación define los tiempos de ejecución por fases, asegurando que cada entregable esté
+				alineado con los recursos disponibles y las dependencias del proyecto. El enfoque escalonado permite mitigar
+				riesgos tecnológicos y financieros.
+			</p>
+			<div className="space-y-4">
+				{tasks.map((task, i) => (
+					<div key={i}>
+						<p className="font-semibold text-gray-700">{task.name}</p>
+						<div className="w-full bg-gray-200 h-4 rounded-full">
+							<div className={`${task.color} h-4 rounded-full`} style={{ width: `${20 * (i + 1)}%` }}></div>
+						</div>
+						<p className="text-sm text-gray-500 mt-1">{task.duration}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	);
+}
+
+function WorkPackagesPhase() {
+	const packages = [
+		{ name: "Infraestructura Digital", desc: "Modernización de servidores y seguridad de datos." },
+		{ name: "IA de Auditoría", desc: "Desarrollo del motor de análisis automatizado." },
+		{ name: "Capacitación", desc: "Formación del personal y manuales técnicos." },
+		{ name: "Integración API", desc: "Conexión con sistemas contables existentes." },
+		{ name: "Evaluación de Resultados", desc: "Medición del impacto financiero y de productividad." },
+	];
+
+	return (
+		<div className="bg-white p-6 rounded-2xl shadow-md">
+			<h3 className="text-2xl font-semibold text-indigo-700 mb-4 text-center">Paquetes de Trabajo</h3>
+			<p className="text-gray-700 leading-relaxed mb-6 text-justify">
+				Los paquetes de trabajo agrupan actividades específicas para optimizar la ejecución y el control del proyecto.
+				Cada paquete tiene responsables definidos, objetivos medibles y un presupuesto estimado.
+			</p>
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+				{packages.map((pkg, i) => (
+					<div key={i} className="border border-gray-300 p-4 rounded-xl hover:shadow-lg transition">
+						<h4 className="font-semibold text-indigo-600">{pkg.name}</h4>
+						<p className="text-gray-600 mt-2">{pkg.desc}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	);
+}
+
+function ScenariosPhase() {
+	return (
+		<div className="bg-white p-6 rounded-2xl shadow-md">
+			<h3 className="text-2xl font-semibold text-indigo-700 mb-4 text-center">Escenarios</h3>
+			<p className="text-gray-700 mb-6 text-justify">
+				Los escenarios permiten visualizar cómo reaccionará la organización ante distintos contextos futuros. Se
+				analizan las variables económicas, tecnológicas y humanas que podrían alterar la adopción del sistema
+				automatizado, facilitando la anticipación y adaptación a cambios.
+			</p>
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-800">
+				<div className="p-4 bg-green-100 rounded-xl">
+					<h4 className="font-semibold text-green-700 mb-2">Optimista</h4>
+					<p>Adopción total, ROI anticipado y expansión de la automatización a nuevas áreas.</p>
+				</div>
+				<div className="p-4 bg-yellow-100 rounded-xl">
+					<h4 className="font-semibold text-yellow-700 mb-2">Moderado</h4>
+					<p>Adopción gradual, resultados estables y necesidad de ajustes técnicos menores.</p>
+				</div>
+				<div className="p-4 bg-red-100 rounded-xl">
+					<h4 className="font-semibold text-red-700 mb-2">Crítico</h4>
+					<p>Retrasos por resistencia o costos, mitigados mediante pilotos y retroalimentación constante.</p>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+function TransitionArchitecturesPhase() {
+	return (
+		<div className="bg-white p-6 rounded-2xl shadow-md">
+			<h3 className="text-2xl font-semibold text-indigo-700 mb-4 text-center">Arquitecturas de Transición</h3>
+			<p className="text-gray-700 leading-relaxed mb-6 text-justify">
+				La arquitectura de transición actúa como un puente entre el entorno actual y la visión objetivo. Cada iteración
+				reduce el impacto operativo y acelera la madurez digital. Las fases se articulan con entregas parciales que
+				permiten validar resultados tempranos y corregir desviaciones antes del despliegue final.
+			</p>
+			<div className="relative flex items-center justify-center">
+				<div className="flex flex-col md:flex-row items-center md:space-x-4">
+					{["Actual", "Transición 1", "Transición 2", "Objetivo"].map((phase, i) => (
+						<div key={i} className="flex flex-col items-center">
+							<div
+								className={`w-20 h-20 flex items-center justify-center rounded-full font-semibold text-white ${
+									i === 0 ? "bg-gray-400" : i === 3 ? "bg-green-500" : "bg-indigo-500"
+								}`}
+							>
+								{phase}
+							</div>
+							{i < 3 && <div className="hidden md:block w-16 h-1 bg-gray-300 mx-2"></div>}
+						</div>
+					))}
+				</div>
+			</div>
+			<p className="text-sm text-gray-500 mt-4 text-center">
+				Cada transición incluye validación funcional, capacitación y medición de impacto.
+			</p>
+		</div>
+	);
+}
 
 export default RoadMap;
