@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/togaf-e/static/css/main.1f80450d.css",
-    "main.js": "/togaf-e/static/js/main.77a8488c.js",
+    "main.js": "/togaf-e/static/js/main.45905963.js",
     "static/media/video.mp4": "/togaf-e/static/media/video.efb6f15a76ccc9ef40af.mp4",
     "static/media/preview.jpg": "/togaf-e/static/media/preview.ea0429553539cfd417ad.jpg",
     "index.html": "/togaf-e/index.html",
     "main.1f80450d.css.map": "/togaf-e/static/css/main.1f80450d.css.map",
-    "main.77a8488c.js.map": "/togaf-e/static/js/main.77a8488c.js.map"
+    "main.45905963.js.map": "/togaf-e/static/js/main.45905963.js.map"
   },
   "entrypoints": [
     "static/css/main.1f80450d.css",
-    "static/js/main.77a8488c.js"
+    "static/js/main.45905963.js"
   ]
 }
